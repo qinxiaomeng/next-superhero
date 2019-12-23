@@ -54,18 +54,76 @@
 	text-overflow: ellipsis;
 }
 
-.movie-score-wapper {
+.hot-movies {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 0 20rpx 20rpx 20rpx;
 }
-.star-ico {
-	width: 20rpx;
-	height: 20rpx;
-	margin-top: 6rpx;
+.hot-movies-single {
+	width: 350rpx;
+	height: 220rpx;
+	margin-top: 20rpx;
 }
-.movie-score {
-	font-size: 12px;
-	color: grey;
-	margin-left: 8rpx;
-	line-height: 20rpx;
+
+/* guess u like */
+.guess-u-like {
+	display: flex;
+	flex-direction: column;
+}
+
+.single-like-movie {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 30rpx 20rpx;
+}
+
+.like-movie {
+	height: 240rpx;
+	border-radius: 3%;
+	flex: 0 0 180rpx;
+}
+.like-desc {
+	display: flex;
+	flex-direction: column;
+	width: 340rpx;
+}
+.like-title {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.like-info{
+	color: #808080;
+	font-size: 14px;
+}
+
+/* 点赞css */
+.movie-oper {
+	width: 140upx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-left: dashed 2px;
+	border-left-color: #dbdbda;
+}
+
+.praise-ico {
+	width: 40upx;
+	height: 40upx;
+	align-self: center;
+}
+
+.praise-me {
+	font-size: 14px;
+	color: #feab2a;
+	align-self: center;
+}
+
+.animation-opacity {
+	font-weight: bold;
+	opacity: 0;
 }
