@@ -11,13 +11,40 @@
 		}, {
 			"path": "pages/search/search",
 			"style": {
-
+				"navigationBarTitleText" : "搜索预告片"
 			}
 		}, {
 			"path": "pages/me/me",
 			"style": {}
 		}
-	],
+	    ,{
+            "path" : "pages/movie/movie",
+            "style" : {
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent",
+						"buttons":[
+							{
+								"type":"share"
+							},
+							{
+								"type":"home"
+							}
+						]
+					}
+				}
+			}
+        }
+        ,{
+            "path" : "pages/cover/cover",
+            "style" : {
+				"navigationBarTextStyle": "white",
+				"navigationBarTitleText": "封面",
+				"navigationBarBackgroundColor": "#000000",
+				"backgroundColor": "#000000"
+			}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "电影预告",

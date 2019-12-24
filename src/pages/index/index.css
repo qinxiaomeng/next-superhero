@@ -81,9 +81,9 @@
 }
 
 .like-movie {
+	width: 180rpx;
 	height: 240rpx;
 	border-radius: 3%;
-	flex: 0 0 180rpx;
 }
 .like-desc {
 	display: flex;

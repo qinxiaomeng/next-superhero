@@ -4,7 +4,9 @@
 		<!-- 轮播图 start -->
 		<swiper :indicator-dots="true" :autoplay="true" class="carousel">
 			<swiper-item v-for="carousel in carouselList" :key="carousel.id">
-				<image :src="carousel.image" class="carousel"></image>
+				<navigator :url="'../movie/movie?trailerId='+carousel.movieId">
+					<image :src="carousel.image" class="carousel"></image>
+				</navigator>
 			</swiper-item>
 		</swiper>
 		<!-- 轮播图 end -->
@@ -21,7 +23,9 @@
 			<view class="single-poster" v-for="superhero in hotSuperheroList">
 				<view class="poster-wapper">
 					<view >
-						<image :src="superhero.cover" class="poster"></image>
+						<navigator :url="'../movie/movie?trailerId='+superhero.id">
+							<image :src="superhero.cover" class="poster"></image>
+						</navigator>
 					</view>
 					<view class="movie-name">{{superhero.name}}</view>
 					<trailer-stars :innerScore="superhero.score" :showNum="1"></trailer-stars>
@@ -43,6 +47,9 @@
 		
 		<view class="page-block hot-movies">
 			<video
+				:id="trailer.id"
+				:data-plaingIndex="trailer.id"
+				@play="meIsPlaing"
 				class="hot-movies-single"
 				v-for="trailer in hotTrailerList"
 				:poster="trailer.poster"
@@ -61,7 +68,9 @@
 		
 		<view class="page-block guess-u-like">
 			<view class="single-like-movie" v-for="(gul,gIndex) in guessULikeList">
-				<image :src="gul.cover" class="like-movie"></image>
+				<navigator :url="'../movie/movie?trailerId='+gul.id">
+					<image :src="gul.cover" class="like-movie"></image>
+				</navigator>
 				<view class="like-desc">
 					<view class="like-title">{{gul.name}}</view>
 					<trailer-stars :innerScore="gul.score"></trailer-stars>
@@ -140,6 +149,32 @@
 						uni.stopPullDownRefresh();
 					}
 				});
+			},
+			meIsPlaing: function(e){
+				var me = this;
+				var trailerId = "";
+				
+				if(e){
+					trailerId = e.currentTarget.dataset.plaingindex;
+					me.videoContext = uni.createVideoContext(trailerId)
+				}
+				var hotTrailerList = me.hotTrailerList;
+				for (var i = 0; i < hotTrailerList.length ; i ++) {
+					var tempId = hotTrailerList[i].id;
+					if (tempId != trailerId) {
+						uni.createVideoContext(tempId).pause();
+					}
+				}
+			}
+		},
+		onShow() {
+			if(this.videoContext){
+				this.videoContext.play();
+			}
+		},
+		onHide() {
+			if (this.videoContext) {
+				this.videoContext.pause();
 			}
 		},
 		onPullDownRefresh(){
